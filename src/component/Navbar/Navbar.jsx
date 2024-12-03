@@ -12,7 +12,6 @@ import { counterContext } from "../../context/CreateContext/CreateContext.js";
 function Navbar() {
     const [value,setValue] = useState(1)
     const {drawer,setDrawer} = useContext(counterContext)
-    
     const theme = useTheme();
     const isMatchLg = useMediaQuery(theme.breakpoints.down("lg"));
     const isMatchMd = useMediaQuery(theme.breakpoints.down("md"));
