@@ -13,12 +13,12 @@ import { counterContext } from "../../context/CreateContext/CreateContext.js";
 function Navbar() {
     const [value,setValue] = useState(1)
     const {drawer,setDrawer} = useContext(counterContext)
-    
+    //Remove extra space
     const theme = useTheme();
     const isMatchLg = useMediaQuery(theme.breakpoints.down("lg"));
     const isMatchMd = useMediaQuery(theme.breakpoints.down("md"));
     const isMatchSm = useMediaQuery(theme.breakpoints.down('sm'))
-    console.log(isMatchSm)
+    console.log(isMatchSm) // Remove this 
     
   const handelTab = (e,value)=>{
     setValue(value)
@@ -91,10 +91,10 @@ function Navbar() {
             </>
           }
 
-
+{/* Remove Extra spaces */}
 
         </Box>
-
+{/* and here */}
         
 
         <Box
