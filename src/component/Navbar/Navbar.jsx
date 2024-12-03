@@ -18,7 +18,7 @@ function Navbar() {
     const isMatchLg = useMediaQuery(theme.breakpoints.down("lg"));
     const isMatchMd = useMediaQuery(theme.breakpoints.down("md"));
     const isMatchSm = useMediaQuery(theme.breakpoints.down('sm'))
-    console.log(isMatchSm)
+    console.log(isMatchSm)// Remove this
     
   const handelTab = (e,value)=>{
     setValue(value)
