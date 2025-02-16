@@ -4,7 +4,6 @@ import SkillBar from "../component/SkillBar";
 function About() {
   const theme = useTheme();
   const isMatchSm = useMediaQuery(theme.breakpoints.down("sm"));
-
   return (
     <>
       <h3 className=" text-center text-[30px] mt-5 ">
