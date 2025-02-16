@@ -9,7 +9,6 @@ import DrawerCom from "../Drawer/DrawerCom.jsx";
 import { useState } from "react";
 import { useContext } from "react";
 import { counterContext } from "../../context/CreateContext/CreateContext.js";
-
 function Navbar() {
     const [value,setValue] = useState(1)
     const {drawer,setDrawer} = useContext(counterContext)
@@ -17,9 +16,7 @@ function Navbar() {
     const theme = useTheme();
     const isMatchLg = useMediaQuery(theme.breakpoints.down("lg"));
     const isMatchMd = useMediaQuery(theme.breakpoints.down("md"));
-    const isMatchSm = useMediaQuery(theme.breakpoints.down('sm'))
-    console.log(isMatchSm)
-    
+    const isMatchSm = useMediaQuery(theme.breakpoints.down('sm'))    
   const handelTab = (e,value)=>{
     setValue(value)
 }
@@ -55,7 +52,6 @@ function Navbar() {
             color: "black",
           }}
         >
-          
           {
             isMatchSm?<DrawerCom/>:
             <>
@@ -71,7 +67,6 @@ function Navbar() {
                 alignItems: "center",
                 justifyContent: "center",
                 flexShrink:1
-                
             }}
             >
             {NAV_ITEMS.map((item) => (
@@ -90,13 +85,7 @@ function Navbar() {
           </Tabs>
             </>
           }
-
-
-
         </Box>
-
-        
-
         <Box
           sx={{
             width:isMatchSm?"180px":isMatchMd?"130px":isMatchLg?"140px":"247px",
@@ -120,7 +109,6 @@ function Navbar() {
           </Box>
           <Box
             sx={{
-
               color: "black",
               fontSize: isMatchLg?"22px":"30px",
             }}
