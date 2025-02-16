@@ -5,7 +5,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        great:"Great Vibes",
+        oswald:"Oswald",
+        antonCs:"Anton SC",
+        archivo:"Archivo",
+      }
+    },
   },
   plugins: [],
 }

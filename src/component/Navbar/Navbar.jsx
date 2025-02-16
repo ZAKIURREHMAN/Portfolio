@@ -11,36 +11,54 @@ import { useContext } from "react";
 import { counterContext } from "../../context/CreateContext/CreateContext.js";
 
 function Navbar() {
-    const [value,setValue] = useState(1)
-    const {drawer,setDrawer} = useContext(counterContext)
-    
-    const theme = useTheme();
-    const isMatchLg = useMediaQuery(theme.breakpoints.down("lg"));
-    const isMatchMd = useMediaQuery(theme.breakpoints.down("md"));
-    const isMatchSm = useMediaQuery(theme.breakpoints.down('sm'))
-    console.log(isMatchSm)
-    
-  const handelTab = (e,value)=>{
-    setValue(value)
-}
+  const [value, setValue] = useState(1);
+  const { drawer, setDrawer, toggle, setToggle } = useContext(counterContext);
+  const theme = useTheme();
+  const isMatchLg = useMediaQuery(theme.breakpoints.down("lg"));
+  const isMatchMd = useMediaQuery(theme.breakpoints.down("md"));
+  const isMatchSm = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const handelTab = (e, value) => {
+    setValue(value);
+  };
+
   return (
     <AppBar
+    position="static"
       sx={{
         marginTop: "69px",
-        backgroundColor: "white",
+        backgroundColor: toggle ? "black" : "white",
         boxShadow: "0px 0px 0px white",
+        border:'2px solid red',
+
       }}
     >
-      <Box sx={{ height: "100px", display: "flex", }}>
+      <Box
+        sx={{
+          height: "100px",
+          display: "flex",
+          backgroundColor: toggle ? "black" : "white",
+        }}
+      >
         <Box
           sx={{
-            width:isMatchSm?"110px":isMatchMd?"110px":isMatchLg?'160px':'247px',
+            width: isMatchSm
+              ? "110px"
+              : isMatchMd
+              ? "110px"
+              : isMatchLg
+              ? "160px"
+              : "247px",
             display: "flex",
             justifyContent: "end",
           }}
         >
           <Box sx={{ height: "100%", width: "100px" }}>
-            <img src="./logo/logo.jpg" alt="Logo" className=" h-full w-full " />
+            <img
+              src="./logo/logo.jpg"
+              alt="Logo"
+              className=" h-full w-full  "
+            />
           </Box>
         </Box>
 
@@ -55,83 +73,109 @@ function Navbar() {
             color: "black",
           }}
         >
-          
-          {
-            isMatchSm?<DrawerCom/>:
+          {isMatchSm ? (
+            <DrawerCom />
+          ) : (
             <>
-            <Tabs
-            textColor="inherit"
-            indicatorColor="secondary"
-            value={value}
-            onChange={(e,value)=>handelTab(e,value)}
-            sx={{
-                height: "100%",
-                width: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexShrink:1
-                
-            }}
-            >
-            {NAV_ITEMS.map((item) => (
-                <Tab value={item.id}
+              <Tabs
+                textColor="inherit"
+                indicatorColor="secondary"
+                value={value}
+                onChange={(e, value) => handelTab(e, value)}
                 sx={{
-                    margin: "0px auto",
-                    width: "50px",           
-                    maxWidth:'100px',
-                    // minWidth:'60px'
-                    minWidth: isMatchMd?"58px":isMatchLg?"90px":"115px" ,     
+                  height: "100%",
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 1,
                 }}
-                key={item.id}
-                label={item.name}
-                ></Tab>
-            ))}
-          </Tabs>
+              >
+                {NAV_ITEMS.map((item) => (
+                  <Tab
+                    value={item.id}
+                    sx={{
+                      margin: "0px auto",
+                      width: "50px",
+                      maxWidth: "100px",
+                      // minWidth:'60px'
+                      minWidth: isMatchMd
+                        ? "58px"
+                        : isMatchLg
+                        ? "90px"
+                        : "115px",
+                    }}
+                    key={item.id}
+                    label={item.name}
+                  ></Tab>
+                ))}
+              </Tabs>
             </>
-          }
-
-
-
+          )}
         </Box>
-
-        
-
         <Box
           sx={{
-            width:isMatchSm?"180px":isMatchMd?"130px":isMatchLg?"140px":"247px",
+            width: isMatchSm
+              ? "200px"
+              : isMatchMd
+              ? "130px"
+              : isMatchLg
+              ? "140px"
+              : "247px",
             display: "flex",
             justifyContent: isMatchLg ? "space-evenly" : "space-between",
             alignItems: "center",
-            gap:'20px'
+            gap: "20px",
           }}
         >
           <Box
             sx={{
               display: "flex",
-              height:'33px',
-              width: isMatchLg?"110px":'159px',
+              height: "33px",
+              width: isMatchLg ? "110px" : "159px",
               borderRadius: "10px",
               backgroundColor: "#9024B6",
-
             }}
           >
-            <button className={`w-full h-full ${isMatchMd?"text-[11px]":"text-[13px]"} `}> DOWNLOAD CV</button>
+            <button
+              className={`w-full h-full ${
+                isMatchMd ? "text-[11px]" : "text-[13px]"
+              } `}
+            >
+              {" "}
+              DOWNLOAD CV
+            </button>
           </Box>
           <Box
             sx={{
-
               color: "black",
-              fontSize: isMatchLg?"22px":"30px",
+              fontSize: isMatchLg ? "22px" : "30px",
             }}
           >
-            <i className="fa-solid fa-moon"></i>{" "}
-          </Box >
-          {
-            isMatchSm?  <Box sx={{color:'black',fontSize:'20px',cursor:'pointer'}} >
-            <i className={`fa-regular fa-chart-bar ${isMatchSm?" text-[30px] ":""} `} onClick={()=>setDrawer(!drawer)} ></i>
-            </Box>:""
-          }
+            <i
+              className="fa-solid fa-moon"
+              onClick={() => setToggle(!toggle)}
+            ></i>{" "}
+          </Box>
+          {isMatchSm ? (
+            <Box
+              sx={{
+                color: "black",
+                fontSize: "20px",
+                cursor: "pointer",
+                marginRight: "10px",
+              }}
+            >
+              <i
+                className={`fa-regular fa-chart-bar ${
+                  isMatchSm ? " text-[30px] " : ""
+                } `}
+                onClick={() => setDrawer(!drawer)}
+              ></i>
+            </Box>
+          ) : (
+            ""
+          )}
         </Box>
       </Box>
     </AppBar>
