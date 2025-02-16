@@ -9,8 +9,8 @@ import DrawerCom from "../Drawer/DrawerCom.jsx";
 import { useState } from "react";
 import { useContext } from "react";
 import { counterContext } from "../../context/CreateContext/CreateContext.js";
-
 function Navbar() {
+<<<<<<< HEAD
   const [value, setValue] = useState(1);
   const { drawer, setDrawer, toggle, setToggle } = useContext(counterContext);
   const theme = useTheme();
@@ -22,6 +22,18 @@ function Navbar() {
     setValue(value);
   };
 
+=======
+    const [value,setValue] = useState(1)
+    const {drawer,setDrawer} = useContext(counterContext)
+    
+    const theme = useTheme();
+    const isMatchLg = useMediaQuery(theme.breakpoints.down("lg"));
+    const isMatchMd = useMediaQuery(theme.breakpoints.down("md"));
+    const isMatchSm = useMediaQuery(theme.breakpoints.down('sm'))    
+  const handelTab = (e,value)=>{
+    setValue(value)
+}
+>>>>>>> 5f1ac0b536688e8d6c63f9a4478d58cb1ef99961
   return (
     <AppBar
     position="static"
@@ -73,6 +85,7 @@ function Navbar() {
             color: "black",
           }}
         >
+<<<<<<< HEAD
           {isMatchSm ? (
             <DrawerCom />
           ) : (
@@ -82,6 +95,27 @@ function Navbar() {
                 indicatorColor="secondary"
                 value={value}
                 onChange={(e, value) => handelTab(e, value)}
+=======
+          {
+            isMatchSm?<DrawerCom/>:
+            <>
+            <Tabs
+            textColor="inherit"
+            indicatorColor="secondary"
+            value={value}
+            onChange={(e,value)=>handelTab(e,value)}
+            sx={{
+                height: "100%",
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexShrink:1
+            }}
+            >
+            {NAV_ITEMS.map((item) => (
+                <Tab value={item.id}
+>>>>>>> 5f1ac0b536688e8d6c63f9a4478d58cb1ef99961
                 sx={{
                   height: "100%",
                   width: "100%",
@@ -111,7 +145,11 @@ function Navbar() {
                 ))}
               </Tabs>
             </>
+<<<<<<< HEAD
           )}
+=======
+          }
+>>>>>>> 5f1ac0b536688e8d6c63f9a4478d58cb1ef99961
         </Box>
         <Box
           sx={{
