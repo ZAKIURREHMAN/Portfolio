@@ -10,7 +10,7 @@ function About() {
         <strong>About Me</strong>
       </h3>
       <div
-        className={` h-[500px] border-2 border-green-600 flex gap-10 mt-5 ${
+        className={` border-2 border-green-600 flex gap-10 mt-5 ${
           isMatchSm ? " flex-col-reverse " : " flex-row "
         }  `}
       >
@@ -19,9 +19,11 @@ function About() {
             isMatchSm ? " w-full h-[50%] " : "w-[50%]  "
           } `}
         >
-          <div
-            className={`h-full w-full bg-[url('/homeImages/first.png'),url(/homeImages/second.png),url(/homeImages/manui21.png)] bg-contain bg-center bg-no-repeat  `}
-          ></div>
+
+            <div
+            className={` ${isMatchSm?" h-[350px]  w-[clamp(100px, 4vw, 300px )]  ml-[15%] ":"h-full w-full"} border-2  bg-[url('/homeImages/first.png'),url(/homeImages/second.png),url(/homeImages/manui21.png)] bg-contain bg-center bg-no-repeat  `}
+            >
+          </div>
         </div>
 
         <div
@@ -29,15 +31,44 @@ function About() {
             isMatchSm ? " w-full  h-[50%]  " : "w-[50%]"
           }  `}
         >
-          <h3>Why you hire me</h3>
-          <p>
-            You should hire me as a UI/UX designer because I have a strong eye
-            for design, a deep understanding of user psychology, and a track
-            record of creating intuitive and visually appealing interfaces.
-          </p>
-          <div>
-            < SkillBar />
+          <div className=" flex justify-center font-bold text-[24px] ">
+            <h3>Why you hire me</h3>
           </div>
+          <p className=" font-thin ">
+            I bring hands-on experience building scalable, full-stack web
+            applications using the MERN stack. My ability to deliver clean,
+            efficient code and solve complex problems makes me a valuable asset
+            to any development team.
+          </p>
+
+
+
+          <div className=" flex   " >
+            <div className={` border-2 border-yellow-600    ${
+            isMatchSm ? " w-full  h-[50%]  " : "w-[60%]"
+          }  `} >
+              <SkillBar skill="HTML" per={80} />
+              <SkillBar skill="Bootstrap" per={80} />
+               <SkillBar skill="Tailwind CSS" per={60} />
+               <SkillBar skill="React js" per={80} />
+               <SkillBar skill="Express js" per={70} />
+               <SkillBar skill="GitHub" per={70} />
+            </div>
+            <div className={` border-2 border-yellow-600    ${
+            isMatchSm ? " w-full  h-[50%]  " : "w-[60%]"
+          }  `} >
+              <SkillBar skill="CSS" per={50} />
+               <SkillBar skill="MetriUI" per={80} />
+                <SkillBar skill="JavaScript" per={85} />
+                <SkillBar skill="Node js" per={70} />
+                 <SkillBar skill="MongoDB js" per={60} />
+            </div>
+
+          </div>
+
+
+
+
         </div>
       </div>
     </>
